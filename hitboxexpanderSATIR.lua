@@ -101,7 +101,7 @@ if game.PlaceId==286090429 then--game detection (Arsenal)
         return oldNamecall(a,b,c,...)
     end)
 elseif game.PlaceId==292439477 then--game detection (Phantom Forces)
-    local ui=loadstring(game:HttpGet("https://raw.githubusercontent.com/The3Bakers4565/Spicy-Bagel/main/Functions/CoastingUI.lua"))()
+    local ui=loadstring(game:HttpGet("https://raw.githubusercontent.com/SatirCS/hitboxexpander/main/Coasting.lua"))()
     local getenemys=function()--get enemys function
         local a={}
         for _,v in pairs(game.Workspace.Players:GetChildren())do--using a basic method because hitboxes dont require names and etc
@@ -188,7 +188,7 @@ elseif game.PlaceId==292439477 then--game detection (Phantom Forces)
         end
     end)
 elseif game.PlaceId==3233893879 then--game detection (Bad Business)
-    local ui=loadstring(game:HttpGet("https://raw.githubusercontent.com/The3Bakers4565/Spicy-Bagel/main/Functions/CoastingUI.lua"))()
+    local ui=loadstring(game:HttpGet("https://raw.githubusercontent.com/SatirCS/hitboxexpander/main/Coasting.lua"))()
     local ClientTeam=""--get enemys fix
     local PlayerTable=getupvalue(require(game.ReplicatedStorage.TS).Characters.GetCharacter,1)--set a local variable for the player table
     for _,v in pairs(game.Teams:GetChildren())do
