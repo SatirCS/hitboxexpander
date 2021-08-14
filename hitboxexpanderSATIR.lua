@@ -121,8 +121,8 @@ elseif game.PlaceId==292439477 then--game detection (Phantom Forces)
     local col=Color3.new(1,0,1)
     local size=5
     local targets={"Head","Torso"}
-    local tab=ui:CreateTab("siz hack 2021")
-    local section=tab:CreateSection("working 2021")
+    local tab=ui:CreateTab("Hitbox Expander")
+    local section=tab:CreateSection("V1, Phantom Forces")
     section:CreateToggle("Enabled",function(x)
         enabled=x
         if not x then
@@ -237,8 +237,8 @@ elseif game.PlaceId==3233893879 then--game detection (Bad Business)
     local refl=0
     local col=Color3.new(1,0,1)
     local size=5
-    local tab=ui:CreateTab("siz hack 2021")
-    local section=tab:CreateSection("working 2021")
+    local tab=ui:CreateTab("Hitbox Expander")
+    local section=tab:CreateSection("V1, Phantom Forces")
     section:CreateToggle("Enabled",function(x)
         enabled=x
     end)
