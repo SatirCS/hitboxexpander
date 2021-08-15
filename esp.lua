@@ -1,8 +1,22 @@
 local Camera = game:GetService("Workspace").CurrentCamera
 local RunService = game:GetService("RunService")
-local UserInputService = game:GetService("UserInputService")3
+local UserInputService = game:GetService("UserInputService")
+local FontValue = 3
 local Visibility = true
 
+local function CycleFont()
+    if FontValue + 1 > 3 then
+       FontValue = 1
+    else
+        FontValue = FontValue + 1
+    end
+end
+
+local function ModelTemplate()
+   local Objects = {
+       Box = Drawing.new("Quad"),
+       Name = Drawing.new("Text"),
+   } 
    
    return Objects
 end
@@ -22,6 +36,10 @@ local function ApplyModel(Model)
     local CurrentParent = Model.Parent
     
     spawn(function()
+        Objects.Name.Center = false
+        Objects.Name.Visible = false
+        Objects.Name.Outline = false
+        Objects.Name.Transparency = 0
         Objects.Box.Visible = true
         Objects.Box.Transparency = 1
        
@@ -29,7 +47,18 @@ local function ApplyModel(Model)
             local Vector, OnScreen = Camera:WorldToScreenPoint(Model.Head.Position)
             local Distance = (Camera.CFrame.Position - Model.HumanoidRootPart.Position).Magnitude
             
-         
+            if OnScreen and Model.Parent.Name ~= game:GetService("Players").LocalPlayer.Team.Name and Visibility then
+                Objects.Name.Position = Vector2.new(Vector.X, Vector.Y + math.clamp(Distance / 10, 10, 30) - 10)
+                Objects.Name.Size = math.clamp(30 - Distance / 10, 10, 30)
+                Objects.Name.Color = Color3.fromHSV(math.clamp(Distance / 5, 0, 125) / 255, 0.75, 1)
+                Objects.Name.Visible = true
+                Objects.Name.Font = FontValue
+                Objects.Name.Transparency = math.clamp((500 - Distance) / 200, 0.2, 1)
+            else
+                Objects.Name.Visible = false 
+            end
+            
+            Objects.Name.Text = string.format("[%s sd] [%s] Enemy", tostring(math.floor(Distance)), Model:FindFirstChildOfClass("Model") and Model:FindFirstChildOfClass("Model").Name or "NONE")
             
             local PartCorners = GetPartCorners(Model.HumanoidRootPart)
             local VectorTR, OnScreenTR = Camera:WorldToScreenPoint(PartCorners.TR)
