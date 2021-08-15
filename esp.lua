@@ -1,16 +1,7 @@
 local Camera = game:GetService("Workspace").CurrentCamera
 local RunService = game:GetService("RunService")
-local UserInputService = game:GetService("UserInputService")
-local FontValue = 3
+local UserInputService = game:GetService("UserInputService")3
 local Visibility = true
-
-local function CycleFont()
-    if FontValue + 1 > 3 then
-       FontValue = 1
-    else
-        FontValue = FontValue + 1
-    end
-end
 
    
    return Objects
