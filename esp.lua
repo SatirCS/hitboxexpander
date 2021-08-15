@@ -12,11 +12,6 @@ local function CycleFont()
     end
 end
 
-local function ModelTemplate()
-   local Objects = {
-       Box = Drawing.new("Quad"),
-       Name = Drawing.new("Text"),
-   } 
    
    return Objects
 end
@@ -43,8 +38,7 @@ local function ApplyModel(Model)
             local Vector, OnScreen = Camera:WorldToScreenPoint(Model.Head.Position)
             local Distance = (Camera.CFrame.Position - Model.HumanoidRootPart.Position).Magnitude
             
-            
-            Objects.Name.Text = string.format("[%s sd] [%s] Enemy", tostring(math.floor(Distance)), Model:FindFirstChildOfClass("Model") and Model:FindFirstChildOfClass("Model").Name or "NONE")
+         
             
             local PartCorners = GetPartCorners(Model.HumanoidRootPart)
             local VectorTR, OnScreenTR = Camera:WorldToScreenPoint(PartCorners.TR)
